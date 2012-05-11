@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot>
+
+  <property name="kinect_position_x" value="-0.06" />
+  <property name="kinect_position_y" value="0" />
+  <property name="kinect_position_z" value="0.3" />
+  <property name="kinect_position_rr" value="0" />
+  <property name="kinect_position_rp" value="0.0" />
+  <property name="kinect_position_ry" value="0" />
+  <property name="kinect_parent_name" value="plate_link" />
+
+</robot>

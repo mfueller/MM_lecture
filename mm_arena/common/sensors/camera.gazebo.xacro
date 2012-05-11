@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+      xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="youbot_camera_gazebo" params="name ros_topic">
+
+		<gazebo reference="${name}_link">
+			<sensor:camera name="${name}_sensor">
+				<imageSize>640 480</imageSize>
+				<imageFormat>R8G8B8</imageFormat>
+				<hfov>60</hfov>
+				<nearClip>0.01</nearClip>
+				<farClip>100</farClip>
+				<updateRate>20.0</updateRate>
+				<controller:gazebo_ros_camera name="${name}_controller" plugin="libgazebo_ros_camera.so">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>20.0</updateRate>
+					<imageTopicName>/${ros_topic}/image_raw</imageTopicName>
+					<cameraInfoTopicName>/${ros_topic}/camera_info</cameraInfoTopicName>
+					<frameName>/${name}_link</frameName>
+					<interface:camera name="${name}_iface" />
+				</controller:gazebo_ros_camera>
+			</sensor:camera>
+			<material value="Gazebo/Red" />
+			<turnGravityOff>true</turnGravityOff>
+		</gazebo>
+
+	</xacro:macro>
+
+</root>
