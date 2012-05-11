@@ -5,7 +5,7 @@
   <include filename="$(find mm_arena)/common/sensors/kinect.gazebo.urdf.xacro"/>
   <include filename="$(find mm_arena)/common/sensors/kinect.config.urdf.xacro" />
 
-<xacro:macro name="kinect">
+<xacro:macro name="kinect_gazebo">
   <joint name="base_camera_joint" type="fixed">
     <origin xyz="${kinect_position_x} ${kinect_position_y} ${kinect_position_z}" 
             rpy="${kinect_position_rr} ${kinect_position_rp} ${kinect_position_ry}" />
