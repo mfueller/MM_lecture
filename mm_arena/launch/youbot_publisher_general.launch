@@ -58,4 +58,14 @@
 	<include file="$(find youbot_description)/launch/control/youbot_arm_control.launch" />
 	<include file="$(find youbot_description)/launch/control/youbot_gripper_control.launch" />
 
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_camera_frame" args="0 0 0 0 0 0 /camera_link /openni_camera 500" />
+
+        <node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_depth_frame" args="0 0 0 0 0 0 /camera_depth_optical_frame /openni_depth_optical_frame 500" />
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_rgb_frame" args="0 0 0 0 0 0 /camera_rgb_frame /openni_rgb_frame 500" />
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_rgb_optical_frame" args="0 0 0 0 0 0 /camera_rgb_optical_frame /openni_rgb_optical_frame 500" />
+
+	
 </launch>

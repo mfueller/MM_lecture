@@ -162,7 +162,7 @@ public:
   void syncCallback(const sensor_msgs::Image::ConstPtr& img_rgb, const sensor_msgs::PointCloud2::ConstPtr& pc)
   {
 	 //changed by me 
-	std::cout << "syncCallback" << std::endl;  
+    //	std::cout << "syncCallback" << std::endl;  
 	// .. 
     sensor_msgs::PointCloud2 cpc_msg;
     // create point_cloud message
