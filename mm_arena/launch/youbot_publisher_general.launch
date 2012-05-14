@@ -13,11 +13,18 @@
 		<env name="GAZEBO_RESOURCE_PATH" value="$(find youbot_description):$(find gazebo_worlds):$(find gazebo)/gazebo/share/gazebo" />
 
      <remap from="base_controller/command" to="cmd_vel"/> 
-		<remap from="scan_front" to="base_scan"/>
-      <remap from="/base_odometry/odom" to="/odom" /> 
+	 <remap from="scan_front" to="base_scan"/>
+     <remap from="/base_odometry/odom" to="/odom" /> 
 		
+	 <remap from="/camera/image_raw" to="image_color" />
+	 <remap from="/camera/depth/points" to="point_cloud2" /> 
 	</node>
-
+	
+	<node name="create_colored_point_cloud" pkg="nodelet" type="nodelet" args="standalone cob_gazebo/CreateColoredPointCloud" respawn="false" output="screen">
+		<!-- <remap from="image_color" to="cam3d/rgb/image_raw"/>
+		<remap from="point_cloud2" to="cam3d/depth/points"/> -->
+		<remap from="colored_point_cloud2" to="camera/rgb/points"/>
+	</node>
 	
 	<!-- send youbot urdf to param server -->
 	<!-- <param name="robot_description" command="$(find xacro)/xacro.py '$(find youbot_description)/robots/youbot.urdf.xacro'"/> -->
