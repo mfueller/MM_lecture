@@ -237,7 +237,7 @@ int main(int argc, char** argv)
 }
 
 
-//PLUGINLIB_DECLARE_CLASS(cob_gazebo, CreateColoredPointCloud, CreateColoredPointCloud, nodelet::Nodelet);
+PLUGINLIB_DECLARE_CLASS(cob_gazebo, CreateColoredPointCloud, CreateColoredPointCloud, nodelet::Nodelet);
 
 
 
