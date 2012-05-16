@@ -115,7 +115,6 @@ public:
 
   void initNode()
   {
-	  std::cout << "initNode" << std::endl;
     pc_sync_ = boost::shared_ptr<message_filters::Synchronizer<SyncPolicy> >(new message_filters::Synchronizer<SyncPolicy>(SyncPolicy(3)));
     pc_pub_ = n_.advertise<sensor_msgs::PointCloud2>("colored_point_cloud2", 1, boost::bind(&CreateColoredPointCloud::connectCb, this), boost::bind(&CreateColoredPointCloud::disconnectCb, this));
     //color_image_sub_.subscribe(image_transport_,"image_color", 1);
@@ -127,7 +126,6 @@ public:
 
   virtual void onInit()
   {
-	  std::cout << "onInit" << std::endl;
     n_ = getNodeHandle();
     image_transport_ = image_transport::ImageTransport(n_);
     initNode();
@@ -136,7 +134,6 @@ public:
 
   void connectCb()
   {
-	  std::cout << "connectCb" << std::endl;
     num_subs++;
     if(num_subs > 0)
     {
@@ -147,7 +144,6 @@ public:
 
   void disconnectCb()
   {
-	  std::cout << "disconnectCb" << std::endl;
     num_subs--;
     if(num_subs <= 0)
     {
@@ -224,7 +220,6 @@ public:
 //#### main programm ####
 int main(int argc, char** argv)
 {
-	std::cout << "main" << std::endl;
   // initialize ROS, specify name of node
   ros::init(argc, argv, "cpc_publisher");
 
