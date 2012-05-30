@@ -33,5 +33,5 @@ HomogenousTransform ht_from_xyz(double x, double y, double z) {
 }
 
 HomogenousTransform ht_from_xyzrpy(double x, double y, double z, double roll, double pitch, double yaw) {
-	return ht_from_rpy(roll, pitch, yaw) * ht_from_xyz(x,y,z);
+	return ht_from_xyz(x,y,z) * ht_from_rpy(roll, pitch, yaw);
 }

@@ -9,14 +9,22 @@
 #define HOMOGENOUSTRANSFORM_H_
 
 #include <Eigen/Dense>
+//#include <eigen3/Eigen/Dense>
+
+#include <Eigen/StdVector>
+
+
 #include <math.h>
 
 typedef Eigen::Matrix<double, 1, 4> DH_Parameter;
-typedef Eigen::Matrix<double, Eigen::Dynamic, 4>        DH_Parameters;
+typedef Eigen::Matrix<double, Eigen::Dynamic, 5>        DH_Parameters;
 
 typedef Eigen::Matrix<double, 1, Eigen::Dynamic>        JointParameter;
+EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(JointParameter)
 
 typedef Eigen::Transform<double, 3, Eigen::Affine> 	HomogenousTransform;
+EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(HomogenousTransform)
+
 typedef Eigen::Matrix<double, 3, 3> 			RotationMatrix;
 typedef HomogenousTransform::TranslationPart		TranslationVector;
 
