@@ -49,7 +49,7 @@
 	      args="-urdf -param redcube_description -model redcube -x 1.0 -y 0.5 -z 0.1" respawn="false" output="screen" /> 
 
 	<node name="greencube_gazebo_model" pkg="gazebo" type="spawn_model" 
-	      args="-urdf -param greencube_description -model greencube -x 1.0 -y 0.0 -z 0.1" respawn="false" output="screen" />
+	      args="-urdf -param greencube_description -model greencube -x 1.5 -y 0.3 -z 0.1" respawn="false" output="screen" />
 
 	<node name="bluecube_gazebo_model" pkg="gazebo" type="spawn_model" 
 	      args="-urdf -param bluecube_description -model bluecube -x 1.0 -y -0.5 -z 0.1" respawn="false" output="screen" /> 
@@ -68,4 +68,12 @@
 	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_rgb_optical_frame" args="0 0 0 0 0 0 /camera_rgb_optical_frame /openni_rgb_optical_frame 500" />
 
 	
+
+	<node name="poseEstimator6D_red" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/red_cube.cfg red" />
+	<node name="poseEstimator6D_green" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/green_cube.cfg green" />
+	<node name="poseEstimator6D_blue" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/blue_cube.cfg blue" />
+
 </launch>
