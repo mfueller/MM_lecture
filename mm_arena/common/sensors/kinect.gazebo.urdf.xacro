@@ -8,13 +8,13 @@
       <imageFormat>R8G8B8</imageFormat>
       <imageSize>640 480</imageSize>
       <hfov>57</hfov>
-      <nearClip>0.1</nearClip>
+      <nearClip>0.45</nearClip>
       <farClip>5</farClip>
-      <updateRate>20.0</updateRate>
+      <updateRate>1.0</updateRate>
       <baseline>0.2</baseline>
       <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
-        <updateRate>20.0</updateRate>
+        <updateRate>1.0</updateRate>
         <imageTopicName>/camera/image_raw</imageTopicName>
         <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
         <cameraInfoTopicName>/camera/camera_info</cameraInfoTopicName>

@@ -24,7 +24,8 @@
 
 
   <!-- youbot gripper -->
-  <include filename="$(find youbot_description)/urdf/youbot_gripper/gripper.urdf.xacro" />
+  <!--<include filename="$(find youbot_description)/urdf/youbot_gripper/gripper.urdf.xacro" />-->
+  <include filename="$(find mm_arena)/common/robots/gripper.urdf.xacro" />
  
   <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
   <include filename="$(find youbot_description)/gazebo/gazebo.urdf.xacro" />

@@ -3,7 +3,7 @@
   
   <joint name="cube1_joint" type="floating"> 
     <parent link="world" />
-	<origin xyz="0.0 0.0 0.05" rpy="0 0 0" /> <!--   definition the orgin position of the object!! very important -->
+	<origin xyz="0.0 0.0 0.02" rpy="0 0 0" /> <!--   definition the orgin position of the object!! very important -->
     <child link="greencube1" />
   </joint>
   
