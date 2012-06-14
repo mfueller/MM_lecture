@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- start gazebo -->
+	<param name="/use_sim_time" value="true" />
+	<node name="gazebo" pkg="gazebo" type="gazebo" args="$(find gazebo_worlds)/worlds/empty.world" respawn="false" output="screen">
+		<env name="GAZEBO_RESOURCE_PATH" value="$(find youbot_description):$(find gazebo_worlds):$(find gazebo)/gazebo/share/gazebo" />
+
+     <remap from="base_controller/command" to="cmd_vel"/> 
+	 <remap from="scan_front" to="base_scan"/>
+     <remap from="/base_odometry/odom" to="/odom" /> 
+		
+	 <remap from="/camera/image_raw" to="image_color" />
+	 <remap from="/camera/depth/points" to="point_cloud2" /> 
+	</node>
+	
+	<include file="$(find mm_arena)/launch/add_cubes.launch" />
+
+
+	<node name="create_colored_point_cloud" pkg="nodelet" type="nodelet" args="standalone youbot_gazebo/CreateColoredPointCloud" respawn="false" output="screen">
+		<!-- <remap from="image_color" to="cam3d/rgb/image_raw"/>
+		<remap from="point_cloud2" to="cam3d/depth/points"/> -->
+		<remap from="colored_point_cloud2" to="camera/rgb/points"/>
+	</node>
+	
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_camera_frame" args="0 0 0 0 0 0 /camera_link /openni_camera 500" />
+
+        <node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_depth_frame" args="0 0 0 0 0 0 /camera_depth_optical_frame /openni_depth_optical_frame 500" />
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_rgb_frame" args="0 0 0 0 0 0 /camera_rgb_frame /openni_rgb_frame 500" />
+
+	<node pkg="tf" type="static_transform_publisher" name="youbot_to_kinect_rgb_optical_frame" args="0 0 0 0 0 0 /camera_rgb_optical_frame /openni_rgb_optical_frame 500" />
+
+	
+	<!-- push robot_description to factory and spawn robot in gazebo -->
+	<node name="youbot_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param robot_description -model youBot -x 0.0 -y 0.0 -z 0.1" respawn="false" output="screen" />
+
+   
+        
+         <include file="$(find mm_arena)/launch/youbot_general.launch" />
+
+</launch>

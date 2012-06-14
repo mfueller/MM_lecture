@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+       <!-- cubes in the environment -->
+	<param name="redbase_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/redbase.urdf" />
+	<param name="greenbase_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/greenbase.urdf" />
+	<param name="bluebase_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/bluebase.urdf" />
+
+	<param name="redcube_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/redcube.urdf" />
+	<param name="greencube_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/greencube.urdf" />
+	<param name="bluecube_description" command="$(find xacro)/xacro.py $(find mm_arena)/common/objects/bluecube.urdf" />
+
+<!--
+	<node name="redcube_base_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param redbase_description -model redbase -x 1.0 -y 0.5 -z 0.05" respawn="false" output="screen" /> 
+-->
+	<node name="bluecube_base_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param bluebase_description -model bluebase -x -1.5 -y 0.5 -z 0.05" respawn="false" output="screen" /> 
+<!--
+	<node name="greencube_base_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param greenbase_description -model greenbase -x 1.5 -y 0.3 -z 0.05" respawn="false" output="screen" /> 
+
+	<node name="redcube_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param redcube_description -model redcube -x 0.93 -y 0.5 -z 0.10 -wait redbase" respawn="false" output="screen" /> 
+
+	<node name="greencube_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param greencube_description -model greencube -x 1.43 -y 0.3 -z 0.10 -wait greenbase" respawn="false" output="screen" />
+-->
+
+	<node name="bluecube_gazebo_model" pkg="gazebo" type="spawn_model" 
+	      args="-urdf -param bluecube_description -model bluecube -x -1.5 -y 0.5 -z 0.10 -wait bluebase" respawn="false" output="screen" /> 
+
+</launch>

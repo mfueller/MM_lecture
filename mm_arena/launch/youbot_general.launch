@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+
+
+        <param name="robot_description" command="$(find xacro)/xacro.py '$(find mm_arena)/common/robots/youbot.urdf.xacro'"/>
+
+	
+	<include file="$(find youbot_description)/launch/control/youbot_base_control.launch" />
+	<include file="$(find youbot_description)/launch/control/youbot_arm_control.launch" />
+	<include file="$(find youbot_description)/launch/control/youbot_gripper_control.launch" />
+
+
+	<!-- ARM NAVIGATION -->
+	<include file="$(find youbot_joint_trajectory_action)/ros/launch/youbot_joint_trajectory_action.launch" />
+	<include file="$(find youbot_arm_navigation)/ros/launch/arm_navigation.launch" />
+
+
+	<!-- base navigation -->
+	<include file="$(find youbot_navigation_local)/launch/move_base_local.launch" />
+
+
+	<!-- cube detection -->
+<!--
+	<node name="poseEstimator6D_red" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/red_cube.cfg red" />
+	<node name="poseEstimator6D_green" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/green_cube.cfg green" />
+-->
+	<node name="poseEstimator6D_blue" pkg="tower_of_hanoi_sdk" type="poseEstimator6D" 
+					args="1 2 $(find mm_arena)/config/blue_cube.cfg blue" />
+
+<!--	<node pkg="tf" type="static_transform_publisher" name="cube_detection_dummy" args="0.985 -0.492 0.023 0 0 0 /odom /blue_object_1 1000" /> -->
+
+
+</launch>
